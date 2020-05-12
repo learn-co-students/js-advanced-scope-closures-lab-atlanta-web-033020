@@ -1,27 +1,26 @@
 const produceDrivingRange = function (range) {
   return function (start, end) {
-    const distance = Math.abs(parseInt(start) - parseInt(end));
-    if (range - distance > 0) {
-      return `within range by ${range - distance}`
+    distance = Math.abs(parseInt(start) - parseInt(end));
+    if (distance <= range) {
+      return `within range by ${range - distance}`;
     } else {
-      return `${distance - range} blocks out of range`
+      return `${distance - range} blocks out of range`;
     }
-  }
-}
+  };
+};
 
 const produceTipCalculator = function (tip) {
-  return function (amount) {
-    return tip * amount;
-  }
-}
+  return function (fare) {
+    return tip * fare;
+  };
+};
 
-const createDriver = function () {
-  let id = 0;
+const createDriver = function (name) {
+  let driverId = 0;
   return class {
     constructor(name) {
-      id++;
-      this.id = id;
-      this.name = name;
+      this.name = name
+      this.id = ++driverId;
     }
-  }
-}
+  };
+};
